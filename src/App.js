@@ -6,6 +6,13 @@ import uuid from "uuid";
 
 import "./App.css";
 
+const bottomStyle = {
+  background: "#333",
+  color: "#fff",
+  textAlign: "center",
+  padding: "18px"
+};
+
 class App extends React.Component {
   state = {
     todos: [
@@ -59,18 +66,26 @@ class App extends React.Component {
   };
 
   render() {
+    const completedTodos = () => {
+      return this.state.todos.filter(todos => todos.completed).length;
+    };
     return (
       <div className="App">
         <div className="container">
           {" "}
           <Header />
+          <p style={bottomStyle}>
+            {"Total de tarefas: " + this.state.todos.length}
+            <br />
+            <br />
+            {"Tarefas realizadas: " + completedTodos()}
+          </p>
           <AddTodo addTodo={this.addTodo} />
           <Todos
             todos={this.state.todos}
             markComplete={this.markComplete}
             delTodo={this.delTodo}
-          />{" "}
-          {/* passa os todos para todos.js como props*/}
+          />
         </div>
       </div>
     );
