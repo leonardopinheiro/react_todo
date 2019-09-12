@@ -8,7 +8,23 @@ import "./App.css";
 
 class App extends React.Component {
   state = {
-    todos: []
+    todos: [
+      {
+        id: uuid.v4(),
+        title: "adicionar contador de tasks realizadas, restantes e apagadas",
+        completed: false
+      },
+      {
+        id: uuid.v4(),
+        title: "previnir tasks em branco",
+        completed: false
+      },
+      {
+        id: uuid.v4(),
+        title: "atencao chegou chatuba em",
+        completed: false
+      }
+    ]
   };
 
   //Toogle complete
@@ -43,7 +59,6 @@ class App extends React.Component {
   };
 
   render() {
-    console.log(this.state.todos);
     return (
       <div className="App">
         <div className="container">

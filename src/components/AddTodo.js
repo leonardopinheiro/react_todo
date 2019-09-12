@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 export class AddTodo extends Component {
   state = {
-    title: " "
+    title: ""
   };
 
   onChange = e => {
@@ -11,8 +11,10 @@ export class AddTodo extends Component {
 
   onSubmit = e => {
     e.preventDefault();
-    this.props.addTodo(this.state.title);
-    this.setState({ title: "" });
+    if (this.state.title !== "") {
+      this.props.addTodo(this.state.title);
+      this.setState({ title: "" });
+    }
   };
 
   render() {
@@ -22,11 +24,11 @@ export class AddTodo extends Component {
           type="text"
           style={{ flex: "10", padding: "5px" }}
           name="title"
-          placeholder="Add Todo..."
+          placeholder="Nova tarefa..."
           value={this.state.title}
           onChange={this.onChange}
         />
-        <input type="submit" value="Submit" className="btn" style={{ flex: "1" }} />
+        <input type="submit" value="Adicionar" className="btn" style={{ flex: "1" }} />
       </form>
     );
   }
