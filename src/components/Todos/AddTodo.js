@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Button from "../Button";
 
 export class AddTodo extends Component {
   state = {
@@ -11,7 +12,8 @@ export class AddTodo extends Component {
 
   onSubmit = e => {
     e.preventDefault();
-    if (this.state.title !== "") {
+
+    if (this.state.title.trim().length > 0) {
       this.props.addTodo(this.state.title);
       this.setState({ title: "" });
     }
@@ -28,7 +30,7 @@ export class AddTodo extends Component {
           value={this.state.title}
           onChange={this.onChange}
         />
-        <input type="submit" value="Adicionar" className="btn" style={{ flex: "1" }} />
+        <Button value="Adicionar" className="btn" type="submit" />
       </form>
     );
   }
